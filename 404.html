@@ -1,22 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="keywords" content="Samizdat, samizdat">
-    <meta name="description" content="Drop samizdat">
-    <meta property="og:title" content="Drop samizdat">
-    <meta property="og:description" content="Drop samizdat">
+    <meta name="keywords" content="Samizdat, samizdat, 404">
+    <meta name="description" content="404 Samizdat">
+    <meta property="og:title" content="Samizdat 404">
+    <meta property="og:description" content="Page not found">
     <link rel="stylesheet" href="./style.css">
-    <link rel="preload" fetchpriority="high" as="image" href="./images/main_video.webp" type="image/webp">
-    <title>Samizdat</title>
+    <title>Samizdat 404</title>
 </head>
-<body class="page-home">
+<body class="page-error">
 
     <div class="container">
-        <div id="first" class="site-page">
+        <div class="site-page inner-page">
             <header class="header">
                 <a href="./index.html" class="logo">
                     <img class="logo__image" src="./images/logo.svg" alt="Логотип">
@@ -55,30 +54,34 @@
                     <img src="./images/burger-menu.svg" alt="Меню" width="32" height="32">
                 </button>
             </header>
-            <main class="first-main">
-                    <video
-                            class="intro__video"
-                            muted
-                            loop
-                            autoplay
-                            playsinline
-                            poster="./images/main_video.jpg">
-                        <source
-                                src="./video/main_video.MP4"
-                                type="video/mp4"
-                        />
-                        Your browser doesn't support HTML5 video tag.
-                    </video>
-                    <button class="intro__button">
-                        Продолжить
-                    </button>
+
+            <main class="page-main error-main">
+                <section class="error-card" aria-labelledby="error-title">
+                    <p class="error-card__label" id="error-title">Error</p>
+                    <div class="error-display">
+                        <span class="error-display__digit error-display__digit--left">4</span>
+                        <button
+                            class="rat-toggle"
+                            type="button"
+                            aria-label="Сменить вариацию крысы, сейчас показана вариация 1"
+                            data-rat-toggle
+                            data-rat-images="./images/rat-face-1.png,./images/rat-face-2.png,./images/rat-face-3.png"
+                        >
+                            <img class="rat-toggle__image" src="./images/rat-face-1.png" alt="" data-rat-image>
+                        </button>
+                        <span class="error-display__digit error-display__digit--right">4</span>
+                    </div>
+                    <p class="error-card__text">This page does not exist</p>
+                </section>
             </main>
+
             <footer class="footer">
                 <p>THIS WEBSITE IS A GALLERY OF OBJECTS.</p>
                 <p>IF YOU ARE INTERESTED IN AN ITEM, PLEASE&nbsp;CONTACT&nbsp;US.</p>
             </footer>
         </div>
     </div>
+
     <div class="mobile-block" id="mobile-menu">
         <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">
             <img src="./images/close.svg" alt="Закрыть меню">
@@ -93,6 +96,6 @@
         </nav>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

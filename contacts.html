@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="Samizdat, samizdat, контакты">
+    <meta name="description" content="Контакты Samizdat">
+    <meta property="og:title" content="Samizdat Contacts">
+    <meta property="og:description" content="Контакты Samizdat">
+    <link rel="stylesheet" href="./style.css">
+    <title>Samizdat Contacts</title>
+</head>
+<body class="page-contacts">
+
+    <div class="container">
+        <div class="site-page inner-page">
+            <header class="header">
+                <a href="./index.html" class="logo">
+                    <img class="logo__image" src="./images/logo.svg" alt="Логотип">
+                    <div class="logo__items logo-items">
+                        <span class="logo-items__main">SAMIZDAT ‘N.A.’</span>
+                        <p class="logo-items__description">CLOSED SOCIETY</p>
+                        <p class="logo-items__description">OF&nbsp;INDEPENDENT&nbsp;AUTHORS</p>
+                    </div>
+                </a>
+                <ul class="collection">
+                    <li class="collection__item">
+                        <a href="#" class="collection__link">
+                            Издание 1
+                        </a>
+                    </li>
+                    <li class="collection__item">
+                        <a href="#" class="collection__link">
+                            Издание 2
+                        </a>
+                    </li>
+                    <li class="collection__item">
+                        <a href="#" class="collection__link">
+                            Издание 3
+                        </a>
+                    </li>
+                </ul>
+                <nav class="navigation">
+                    <a href="./contacts.html" class="navigation__link" aria-current="page">
+                        Контакты
+                    </a>
+                    <a href="#" class="navigation__link">
+                        О нас
+                    </a>
+                </nav>
+                <button class="mobile-btn" type="button" aria-expanded="false" aria-controls="mobile-menu">
+                    <img src="./images/burger-menu.svg" alt="Меню" width="32" height="32">
+                </button>
+            </header>
+
+            <main class="page-main contacts-main">
+                <section class="contacts-layout" aria-labelledby="contacts-title">
+                    <div class="contacts-copy">
+                        <h1 class="page-title" id="contacts-title">Контакты</h1>
+                        <ul class="contacts-list" aria-label="Контакты Samizdat">
+                            <li class="contacts-item">
+                                <a class="contacts-link" href="https://t.me/SamizdatNA" target="_blank" rel="noreferrer">
+                                    <span class="contacts-link__label">Telegram</span>
+                                    <img class="contacts-link__arrow" src="./images/contact-arrow.svg" alt="" aria-hidden="true">
+                                </a>
+                            </li>
+                            <li class="contacts-item">
+                                <span class="contacts-text">
+                                    <span class="contacts-link__label contacts-link__label--has-asterisk">
+                                        Instagram
+                                        <span class="contacts-link__asterisk" aria-hidden="true">*</span>
+                                    </span>
+                                    <img class="contacts-link__arrow" src="./images/contact-arrow.svg" alt="" aria-hidden="true">
+                                </span>
+                            </li>
+                            <li class="contacts-item">
+                                <span class="contacts-text">
+                                    <span class="contacts-link__label">Tiktok</span>
+                                    <img class="contacts-link__arrow" src="./images/contact-arrow.svg" alt="" aria-hidden="true">
+                                </span>
+                            </li>
+                            <li class="contacts-item">
+                                <span class="contacts-text">
+                                    <span class="contacts-link__label">VK</span>
+                                    <img class="contacts-link__arrow" src="./images/contact-arrow.svg" alt="" aria-hidden="true">
+                                </span>
+                            </li>
+                        </ul>
+                        <p class="contacts-footnote">
+                            * — принадлежит Meta, деятельность которой<br>
+                            запрещена на территории Российской Федерации
+                        </p>
+                    </div>
+
+                    <div class="contacts-art" aria-hidden="true">
+                        <img class="contacts-art__image" src="./images/contacts-dial.png" alt="">
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <p>THIS WEBSITE IS A GALLERY OF OBJECTS.</p>
+                <p>IF YOU ARE INTERESTED IN AN ITEM, PLEASE&nbsp;CONTACT&nbsp;US.</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="mobile-block" id="mobile-menu">
+        <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">
+            <img src="./images/close.svg" alt="Закрыть меню">
+        </button>
+        <nav class="mobile-menu">
+            <a href="./contacts.html" class="navigation__link" aria-current="page">
+                Контакты
+            </a>
+            <a href="#" class="navigation__link">
+                О нас
+            </a>
+        </nav>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
