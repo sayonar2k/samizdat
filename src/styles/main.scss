@@ -5,6 +5,10 @@
 @use "content";
 @use "report";
 
+#second-content {
+  display: none;
+}
+
 .mobile-btn, .mobile-block {
   display: none;
 }
