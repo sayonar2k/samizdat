@@ -1,77 +1,12 @@
 @use "font";
+@use "vars";
 @use "mixins";
-
-.main-regular {
-  font-family: "IBM Plex Mono", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-
-*, *::after, *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 400;
-  background: #000000;
-  color: #fff;
-}
-
-img, video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-button {
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: transparent;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-@media (hover: hover) {
-  a:hover {
-    color: #fff;
-  }
-}
-
-a:focus, a:active {
-  color: #fff;
-}
-
-.container {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 34px;
-}
+@use "settings";
+@use "content";
+@use "report";
 
 .mobile-btn, .mobile-block {
   display: none;
-}
-
-.content {
-  padding: 40px 0;
-  min-height: 100vh;
-}
-
-#first {
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 /* header */
@@ -81,6 +16,8 @@ a:focus, a:active {
   justify-content: space-between;
   align-items: flex-start;
   position: sticky;
+  z-index: 3;
+  padding: 20px 0;
   top: 0;
   width: 100%;
   background-color: #000;
