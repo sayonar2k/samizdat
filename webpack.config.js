@@ -26,6 +26,11 @@ export default ({ develop }) => ({
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
+            filename: "index.html",
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "./src/content.html"),
+            filename: "content.html",
         }),
         new MiniCssExtractPlugin({
             filename: "./styles/main.css",
