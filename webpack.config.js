@@ -18,7 +18,7 @@ export default ({ develop }) => ({
     mode: develop ? "development" : "production",
     entry: path.resolve(__dirname, "./src/index.js"),
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "docs"),
         filename: "bundle.js",
         assetModuleFilename: 'images/[hash][ext][query]', // при asset/inline не актуальна запись, картинки в коде будут
         clean: true,
