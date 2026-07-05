@@ -45,5 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainElement.innerHTML = mainContent.innerHTML;
         mainContent.remove();
 
+        return;
+
     }
 })
