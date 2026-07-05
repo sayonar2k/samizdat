@@ -1,4 +1,6 @@
-window.addEventListener('DOMContentLoaded', () => {
+import './styles/main.scss';
+
+document.addEventListener('DOMContentLoaded', () => {
     const onResize = () => {
         const width = window.innerWidth;
 

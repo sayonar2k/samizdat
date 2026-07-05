@@ -9,17 +9,16 @@
     <meta name="description" content="Drop samizdat">
     <meta property="og:title" content="Drop samizdat">
     <meta property="og:description" content="Drop samizdat">
-    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-    <link rel="preload" fetchpriority="high" as="image" href="./images/main_video.webp" type="image/webp">
+<!--    <link rel="preload" fetchpriority="high" as="image" href="./images/main_video.webp" type="image/webp">-->
     <title>Samizdat</title>
 </head>
 <body>
 
     <div class="container">
-        <div id="first">
+        <div class="content" id="first">
             <header class="header">
                 <a href="/" class="logo">
                     <img class="logo__image" src="./images/logo.svg" alt="Логотип">
@@ -58,23 +57,23 @@
                     <img src="./images/burger-menu.svg" alt="Меню" width="32" height="32">
                 </button>
             </header>
-            <main class="first-main">
-                    <video
-                            class="intro__video"
-                            muted
-                            loop
-                            autoplay
-                            playsinline
-                            poster="./images/main_video.jpg">
-                        <source
-                                src="./video/main_video.MP4"
-                                type="video/mp4"
-                        />
-                        Your browser doesn't support HTML5 video tag.
-                    </video>
-                    <button class="intro__button">
-                        Продолжить
-                    </button>
+            <main class="main" id="first-main">
+                <video
+                        class="intro__video"
+                        muted
+                        loop
+                        autoplay
+                        playsinline
+                        poster="./images/main_video.jpg">
+                    <source
+                            src="./video/main_video.MP4"
+                            type="video/mp4"
+                    />
+                    Your browser doesn't support HTML5 video tag.
+                </video>
+                <button class="intro__button">
+                    Продолжить
+                </button>
             </main>
             <footer class="footer">
                 <p>THIS WEBSITE IS A GALLERY OF OBJECTS.</p>
@@ -96,6 +95,5 @@
         </nav>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
