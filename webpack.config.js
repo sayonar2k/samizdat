@@ -28,7 +28,7 @@ export default ({ develop }) => ({
             template: path.resolve(__dirname, "./src/index.html"),
         }),
         new MiniCssExtractPlugin({
-            filename: "./styles/main.css",
+            filename: "./styles/main.[contenthash].css",
         })
     ],
     module: {
