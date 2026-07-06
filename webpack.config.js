@@ -17,6 +17,7 @@ const getDevServerConfig = (isDev) => isDev ? {
 export default ({ develop }) => ({
     mode: develop ? "development" : "production",
     entry: path.resolve(__dirname, "./src/index.js"),
+    devtool: false,
     output: {
         path: path.resolve(__dirname, "docs"),
         filename: "bundle.js",

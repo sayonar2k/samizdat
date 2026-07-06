@@ -4,6 +4,11 @@
 @use "settings";
 @use "content";
 @use "report";
+@use "popup";
+
+.disabled {
+  pointer-events: none;
+}
 
 #second-content {
   display: none;
@@ -21,10 +26,12 @@
   align-items: flex-start;
   position: sticky;
   z-index: 3;
-  padding: 20px 0;
+  padding-top: 40px;
+  padding-bottom: 20px;
   top: 0;
-  width: 100%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 }
 
 .logo {
@@ -71,6 +78,15 @@
   font-family: "Helvetica Neue", sans-serif;
   font-weight: bold;
   font-size: 16px;
+  transition: all 150ms ease-in-out;
+
+  &:is(:visited, :focus) {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &.active {
+    color: #fff;
+  }
 }
 
 .navigation {
@@ -153,14 +169,6 @@
 /* media ipad */
 
 @media (max-width: 1020px) {
-  #first {
-    padding: 30px 0;
-  }
-
-  .container {
-    padding: 0 17px;
-  }
-
   .header {
     flex-wrap: wrap;
     gap: 25px;
@@ -200,11 +208,6 @@
 /* media phone */
 
 @media (max-width: 576px) {
-
-  #first {
-    padding-top: 20px;
-  }
-
   .mobile-block {
     display: flex;
     align-items: center;
@@ -241,7 +244,7 @@
 
   .mobile-menu__close {
     position: absolute;
-    top: 50px;
+    top: 30px;
     right: 16px;
   }
 
