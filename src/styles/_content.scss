@@ -13,10 +13,17 @@
     scroll-margin-top: 200px;
   }
 
-  &__placeholder {
+  &__go {
     max-width: 495px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  &__placeholder {
+    transition: all 150ms ease-in-out;
+    &:hover, &:active {
+      filter: drop-shadow(4px 6px 8px rgba(220, 220, 220, 0.45));
+    }
   }
 
   &_v2, &_v3 {

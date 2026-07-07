@@ -46,6 +46,12 @@
     width: 24px;
     height: 24px;
 
+    &:hover {
+      .question-content__svg path {
+        fill: #808080;
+      }
+    }
+
     @media (max-width: 540px) {
       top: 20px;
       left: 12px;

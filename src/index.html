@@ -17,46 +17,48 @@
 </head>
 <body>
 
+<header class="header">
+    <div class="container">
+        <a href="/" class="logo">
+            <img class="logo__image" src="./images/icons/logo.svg" alt="Логотип">
+            <div class="logo__items logo-items">
+                <span class="logo-items__main">SAMIZDAT ‘N.A.’</span>
+                <p class="logo-items__description">CLOSED SOCIETY</p>
+                <p class="logo-items__description">OF&nbsp;INDEPENDENT&nbsp;AUTHORS</p>
+            </div>
+        </a>
+        <ul class="collection">
+            <li class="collection__item disabled">
+                <a href="#edition1" class="collection__link">
+                    Издание 1
+                </a>
+            </li>
+            <li class="collection__item disabled">
+                <a href="#edition2" class="collection__link">
+                    Издание 2
+                </a>
+            </li>
+            <li class="collection__item disabled">
+                <a href="#edition3" class="collection__link">
+                    Издание 3
+                </a>
+            </li>
+        </ul>
+        <nav class="navigation">
+            <a href="/contacts.html" class="navigation__link">
+                Контакты
+            </a>
+            <a href="/about.html" class="navigation__link">
+                О нас
+            </a>
+        </nav>
+        <button class="mobile-btn">
+            <img src="./images/icons/burger-menu.svg" alt="Меню" width="30" height="30">
+        </button>
+    </div>
+</header>
     <div class="container">
         <div class="content" id="first">
-            <header class="header">
-                <a href="/" class="logo">
-                    <img class="logo__image" src="./images/icons/logo.svg" alt="Логотип">
-                    <div class="logo__items logo-items">
-                        <span class="logo-items__main">SAMIZDAT ‘N.A.’</span>
-                        <p class="logo-items__description">CLOSED SOCIETY</p>
-                        <p class="logo-items__description">OF&nbsp;INDEPENDENT&nbsp;AUTHORS</p>
-                    </div>
-                </a>
-                <ul class="collection">
-                    <li class="collection__item disabled">
-                        <a href="#edition1" class="collection__link">
-                            Издание 1
-                        </a>
-                    </li>
-                    <li class="collection__item disabled">
-                        <a href="#edition2" class="collection__link">
-                            Издание 2
-                        </a>
-                    </li>
-                    <li class="collection__item disabled">
-                        <a href="#edition3" class="collection__link">
-                            Издание 3
-                        </a>
-                    </li>
-                </ul>
-                <nav class="navigation">
-                    <a href="/contacts.html" class="navigation__link">
-                        Контакты
-                    </a>
-                    <a href="/about.html" class="navigation__link">
-                        О нас
-                    </a>
-                </nav>
-                <button class="mobile-btn">
-                    <img src="./images/icons/burger-menu.svg" alt="Меню" width="30" height="30">
-                </button>
-            </header>
             <main class="main" id="first-main">
                 <video
                         class="intro__video"
@@ -391,7 +393,9 @@
                                 Скоро
                             </p>
                         </div>
-                        <img width="441" height="439" src="./images/v3_placeholder.svg" alt="Контент появится в будущем" class="content-edition__placeholder">
+                        <button class="content-edition__go">
+                            <img width="441" height="439" src="./images/v3_placeholder.svg" alt="Контент появится в будущем" class="content-edition__placeholder">
+                        </button>
                     </section>
                 </div>
             </main>

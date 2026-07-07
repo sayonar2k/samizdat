@@ -59,8 +59,16 @@ a:focus, a:active {
 }
 
 .content {
-  padding-bottom: 40px;
-  min-height: 100vh;
+  padding-bottom: 20px;
+  min-height: calc(100vh - 150px);
+
+  @media (max-width: 1020px) {
+    min-height: calc(100vh - 180px);
+  }
+
+  @media (max-width: 576px) {
+    min-height: calc(100vh - 92px);
+  }
 }
 
 #first {
