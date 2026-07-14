@@ -39,7 +39,7 @@
 
   &__nav {
     margin-bottom: 24px;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
 
     @media (max-width: 680px) {
@@ -48,10 +48,16 @@
   }
 
   &__link {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
     font-size: 32px;
     line-height: 100%;
     position: relative;
+
+    @media (max-width: 680px) {
+      justify-content: center;
+    }
 
     @media (hover: hover) {
       transition: all 200ms ease-in-out;
