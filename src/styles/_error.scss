@@ -27,7 +27,7 @@
 .error__digit {
   position: absolute;
   z-index: 0;
-  top: 5.2%;
+  top: 50%;
   width: 37%;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 256px;
@@ -36,12 +36,12 @@
 
   &_left {
     left: 0;
-    transform: translateX(14%);
+    transform: translate(32%, -50%);
   }
 
   &_right {
     right: 0;
-    transform: translateX(-14%);
+    transform: translate(-32%, -50%);
   }
 }
 
