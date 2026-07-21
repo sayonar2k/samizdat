@@ -13,19 +13,24 @@
   position: absolute;
   line-height: 0;
   cursor: zoom-in;
-  transition: filter 180ms ease-in-out, transform 180ms ease-in-out;
+  overflow: visible;
 
   img {
     width: 100%;
     height: auto;
     pointer-events: none;
+    transform: var(--note-transform, none) scale(1);
+    transition: filter 180ms ease-in-out, transform 180ms ease-in-out;
   }
 
   @media (hover: hover) {
     &:hover {
       z-index: 20;
-      filter: brightness(1.08);
-      transform: scale(1.025);
+
+      img {
+        filter: brightness(1.08);
+        transform: var(--note-transform, none) scale(1.025);
+      }
     }
   }
 
@@ -33,6 +38,11 @@
     z-index: 20;
     outline: 2px solid rgba(255, 255, 255, 0.8);
     outline-offset: 3px;
+
+    img {
+      filter: brightness(1.08);
+      transform: var(--note-transform, none) scale(1.025);
+    }
   }
 
   &_1 {
@@ -64,10 +74,21 @@
   }
 
   &_5 {
+    --note-transform: translate(-50%, -50%) rotate(-90deg);
+
     z-index: 5;
     width: 31.43%;
+    aspect-ratio: 331 / 249;
     top: 18.93%;
     left: 67.36%;
+
+    img {
+      width: 75.3%;
+      max-width: unset;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
   }
 
   &_6 {
@@ -120,6 +141,49 @@
   }
 }
 
+@media (max-width: 1020px) {
+  .about-main {
+    padding: 20px 0 40px;
+  }
+
+  .about {
+    width: min(100%, 820px);
+    aspect-ratio: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 32px 24px;
+  }
+
+  .about__note {
+    width: 100%;
+    min-height: 320px;
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: auto;
+      max-width: 100%;
+      max-height: 360px;
+    }
+
+    &_5 {
+      aspect-ratio: auto;
+
+      img {
+        width: auto;
+        max-width: 80%;
+        max-height: 360px;
+      }
+    }
+  }
+}
+
 .note-popup {
   width: 100%;
   height: 100%;
@@ -166,6 +230,31 @@
 }
 
 @media (max-width: 576px) {
+  .about-main {
+    padding: 10px 0 30px;
+  }
+
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .about__note {
+    min-height: 0;
+
+    img {
+      max-height: 70vh;
+    }
+
+    &_5 {
+      min-height: 270px;
+
+      img {
+        max-height: min(82vw, 360px);
+      }
+    }
+  }
+
   .note-popup {
     padding: 12px;
   }
