@@ -115,7 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sections.forEach(section => {
                 const sectionRect = section.getBoundingClientRect();
-                const visibleHeight = Math.max(0, Math.min(sectionRect.bottom, viewportHeight) - Math.max(sectionRect.top, 0));
+                const report = section.nextElementSibling?.classList.contains('report') ? section.nextElementSibling : null;
+                const editionBottom = report ? report.getBoundingClientRect().bottom : sectionRect.bottom;
+                const visibleHeight = Math.max(0, Math.min(editionBottom, viewportHeight) - Math.max(sectionRect.top, 0));
                 const coverage = visibleHeight / viewportHeight;
 
                 if (coverage >= activeCoverage) {
