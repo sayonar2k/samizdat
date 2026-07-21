@@ -15,16 +15,10 @@ body {
   font-weight: 400;
   background: #000000;
   color: #fff;
-  transition: opacity 160ms ease;
 }
 
-html.spa-loading {
-  cursor: progress;
-
-  body {
-    opacity: 0.72;
-    pointer-events: none;
-  }
+html.spa-loading body {
+  pointer-events: none;
 }
 
 img, video {
@@ -40,12 +34,6 @@ button {
   outline: none;
   cursor: pointer;
   background: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body {
-    transition-duration: 1ms;
-  }
 }
 
 a {
