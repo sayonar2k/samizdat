@@ -2,16 +2,6 @@ import './styles/main.scss';
 
 const getPagePath = pathname => pathname.replace(/\/index\.html$/, '/');
 
-const getHistoryUrl = url => {
-    const historyUrl = new URL(url.href);
-
-    if (/\/content\.html$/.test(historyUrl.pathname) && /^#edition[1-3]$/.test(historyUrl.hash)) {
-        historyUrl.hash = '';
-    }
-
-    return historyUrl;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     let cleanupCurrentPage = () => {};
     let currentPagePath = getPagePath(window.location.pathname);
@@ -125,6 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 links.forEach(link => link.classList.remove('active'));
                 currentLink?.classList.add('active');
+
+                const sectionUrl = new URL(window.location.href);
+                sectionUrl.hash = entry.target.id;
+                window.history.replaceState({}, '', sectionUrl);
             });
         }, {
             rootMargin: '-120px 0px -120px 0px',
@@ -293,15 +287,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const navigateTo = async (target, {historyAction = 'push'} = {}) => {
         const url = target instanceof URL ? target : new URL(target, window.location.href);
-        const historyUrl = getHistoryUrl(url);
         const targetPagePath = getPagePath(url.pathname);
 
         if (targetPagePath === currentPagePath) {
             navigationRequest += 1;
             document.documentElement.classList.remove('spa-loading');
 
-            if (historyAction === 'push' && historyUrl.href !== window.location.href) {
-                window.history.pushState({}, '', historyUrl);
+            if (historyAction === 'push' && url.href !== window.location.href) {
+                window.history.pushState({}, '', url);
             }
 
             scrollToUrl(url);
@@ -345,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPagePath = targetPagePath;
 
             if (historyAction === 'push') {
-                window.history.pushState({}, '', historyUrl);
+                window.history.pushState({}, '', url);
             }
 
             initPage();
@@ -396,13 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navigateTo(new URL(window.location.href), {historyAction: 'none'});
     });
 
-    const initialUrl = new URL(window.location.href);
-    const initialHistoryUrl = getHistoryUrl(initialUrl);
-
     initPage();
-    scrollToUrl(initialUrl);
-
-    if (initialHistoryUrl.href !== initialUrl.href) {
-        window.history.replaceState({}, '', initialHistoryUrl);
-    }
+    scrollToUrl(new URL(window.location.href));
 })

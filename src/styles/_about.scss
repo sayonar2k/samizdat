@@ -7,6 +7,7 @@
   aspect-ratio: 1054 / 790;
   position: relative;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .about__note {
@@ -224,7 +225,7 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  cursor: zoom-out;
+  cursor: pointer;
   background-color: rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
