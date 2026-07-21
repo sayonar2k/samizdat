@@ -104,31 +104,56 @@ document.addEventListener('DOMContentLoaded', () => {
             return url.hash === `#${section.id}`;
         });
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                const currentLink = findSectionLink(entry.target);
+        let scrollFrame;
 
-                if (!entry.isIntersecting) {
-                    currentLink?.classList.remove('active');
-                    return;
+        const updateActiveSection = () => {
+            scrollFrame = undefined;
+
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+            let activeSection;
+            let activeCoverage = 0.7;
+
+            sections.forEach(section => {
+                const sectionRect = section.getBoundingClientRect();
+                const visibleHeight = Math.max(0, Math.min(sectionRect.bottom, viewportHeight) - Math.max(sectionRect.top, 0));
+                const coverage = visibleHeight / viewportHeight;
+
+                if (coverage >= activeCoverage) {
+                    activeSection = section;
+                    activeCoverage = coverage;
                 }
-
-                links.forEach(link => link.classList.remove('active'));
-                currentLink?.classList.add('active');
-
-                const sectionUrl = new URL(window.location.href);
-                sectionUrl.hash = entry.target.id;
-                window.history.replaceState({}, '', sectionUrl);
             });
-        }, {
-            rootMargin: '0px',
-            threshold: 0
-        });
 
-        sections.forEach(section => observer.observe(section));
+            if (!activeSection) {
+                return;
+            }
+
+            links.forEach(link => link.classList.remove('active'));
+            findSectionLink(activeSection)?.classList.add('active');
+
+            if (window.location.hash !== `#${activeSection.id}`) {
+                const sectionUrl = new URL(window.location.href);
+                sectionUrl.hash = activeSection.id;
+                window.history.replaceState({}, '', sectionUrl);
+            }
+        }
+
+        const scheduleActiveSectionUpdate = () => {
+            if (scrollFrame) {
+                return;
+            }
+
+            scrollFrame = window.requestAnimationFrame(updateActiveSection);
+        }
+
+        window.addEventListener('scroll', scheduleActiveSectionUpdate, {passive: true});
+        window.addEventListener('resize', scheduleActiveSectionUpdate);
+        updateActiveSection();
 
         return () => {
-            observer.disconnect();
+            window.cancelAnimationFrame(scrollFrame);
+            window.removeEventListener('scroll', scheduleActiveSectionUpdate);
+            window.removeEventListener('resize', scheduleActiveSectionUpdate);
             closeQuestion();
         }
     }
