@@ -1,0 +1,177 @@
+.about-main {
+  min-width: 0;
+}
+
+.about {
+  width: min(100%, 1054px);
+  aspect-ratio: 1054 / 790;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.about__note {
+  position: absolute;
+  line-height: 0;
+  cursor: zoom-in;
+  transition: filter 180ms ease-in-out, transform 180ms ease-in-out;
+
+  img {
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      z-index: 20;
+      filter: brightness(1.08);
+      transform: scale(1.025);
+    }
+  }
+
+  &:focus-visible {
+    z-index: 20;
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 3px;
+  }
+
+  &_1 {
+    z-index: 1;
+    width: 31.76%;
+    top: 6.35%;
+    left: 2.69%;
+  }
+
+  &_2 {
+    z-index: 2;
+    width: 40.71%;
+    top: 53.14%;
+    left: 0;
+  }
+
+  &_3 {
+    z-index: 3;
+    width: 29.23%;
+    top: 0;
+    left: 31.4%;
+  }
+
+  &_4 {
+    z-index: 4;
+    width: 21.61%;
+    top: 16.79%;
+    left: 45.06%;
+  }
+
+  &_5 {
+    z-index: 5;
+    width: 31.43%;
+    top: 18.93%;
+    left: 67.36%;
+  }
+
+  &_6 {
+    z-index: 6;
+    width: 31.37%;
+    top: 3.87%;
+    left: 59.33%;
+  }
+
+  &_7 {
+    z-index: 7;
+    width: 65.94%;
+    top: 23.79%;
+    left: 22.14%;
+  }
+
+  &_8 {
+    z-index: 8;
+    width: 22.36%;
+    top: 41.19%;
+    left: 20.22%;
+  }
+
+  &_9 {
+    z-index: 9;
+    width: 34.01%;
+    top: 33.95%;
+    left: 51.53%;
+  }
+
+  &_10 {
+    z-index: 10;
+    width: 27.64%;
+    top: 44.12%;
+    left: 66.68%;
+  }
+
+  &_11 {
+    z-index: 11;
+    width: 24.97%;
+    top: 68.4%;
+    left: 75.02%;
+  }
+
+  &_12 {
+    z-index: 12;
+    width: 32.59%;
+    top: 61.92%;
+    left: 31.4%;
+  }
+}
+
+.note-popup {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  cursor: zoom-out;
+  background-color: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  transition: opacity 260ms ease-in-out, visibility 260ms ease-in-out,
+    backdrop-filter 260ms ease-in-out, -webkit-backdrop-filter 260ms ease-in-out;
+
+  &_active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    .note-popup__image {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+.note-popup__image {
+  width: min(88vw, 1040px);
+  height: min(82vh, 820px);
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.72);
+  filter: drop-shadow(0 16px 35px rgba(0, 0, 0, 0.45));
+  transition: opacity 260ms ease-in-out, transform 320ms ease-in-out;
+}
+
+@media (max-width: 576px) {
+  .note-popup {
+    padding: 12px;
+  }
+
+  .note-popup__image {
+    width: 94vw;
+    height: 88vh;
+  }
+}

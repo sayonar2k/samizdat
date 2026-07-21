@@ -135,8 +135,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pathname = window.location.pathname;
 
+    const initAboutPage = () => {
+        const notes = document.querySelectorAll('.about__note');
+        const popup = document.getElementById('note-popup');
+        const popupImage = popup?.querySelector('.note-popup__image');
+
+        if (notes.length === 0 || !popup || !popupImage) {
+            return;
+        }
+
+        const closeNote = () => {
+            popup.classList.remove('note-popup_active');
+            popup.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        notes.forEach(note => {
+            note.onclick = () => {
+                const image = note.querySelector('img');
+
+                if (!image) {
+                    return;
+                }
+
+                popupImage.src = image.src;
+                popupImage.alt = image.alt;
+                popup.classList.add('note-popup_active');
+                popup.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                popup.focus();
+            }
+        })
+
+        popup.onclick = e => {
+            if (e.target === popup) {
+                closeNote();
+            }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && popup.classList.contains('note-popup_active')) {
+                closeNote();
+            }
+        })
+    }
+
     if (pathname.includes('content.html')) {
         initContentPage();
+    }
+
+    if (pathname.includes('about.html')) {
+        initAboutPage();
     }
 
 })
