@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.history.replaceState({}, '', sectionUrl);
             });
         }, {
-            rootMargin: '-120px 0px -120px 0px',
+            rootMargin: '0px',
             threshold: 0
         });
 
