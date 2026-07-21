@@ -20,7 +20,7 @@
     height: auto;
     pointer-events: none;
     transform: var(--note-transform, none) scale(1);
-    transition: filter 180ms ease-in-out, transform 180ms ease-in-out;
+    transition: filter 220ms ease, transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   @media (hover: hover) {
@@ -46,44 +46,53 @@
   }
 
   &_1 {
+    --note-ratio: 501 / 731;
+
     z-index: 1;
-    width: 31.76%;
-    top: 6.35%;
-    left: 2.69%;
+    width: 28.063%;
+    top: 9.04%;
+    left: 4.37%;
   }
 
   &_2 {
+    --note-ratio: 812 / 525;
+
     z-index: 2;
-    width: 40.71%;
-    top: 53.14%;
-    left: 0;
+    width: 37.059%;
+    top: 55.576%;
+    left: 2.099%;
   }
 
   &_3 {
+    --note-ratio: 528 / 720;
+
     z-index: 3;
-    width: 29.23%;
-    top: 0;
-    left: 31.4%;
+    width: 24.933%;
+    top: 3.528%;
+    left: 33.336%;
   }
 
   &_4 {
+    --note-ratio: 724 / 513;
+
     z-index: 4;
-    width: 21.61%;
-    top: 16.79%;
-    left: 45.06%;
+    width: 19.533%;
+    top: 18.302%;
+    left: 45.869%;
   }
 
   &_5 {
     --note-transform: translate(-50%, -50%) rotate(-90deg);
+    --note-ratio: 1367 / 962;
 
     z-index: 5;
-    width: 31.43%;
-    aspect-ratio: 331 / 249;
-    top: 18.93%;
-    left: 67.36%;
+    width: 29.711%;
+    aspect-ratio: var(--note-ratio);
+    top: 20.741%;
+    left: 68.206%;
 
     img {
-      width: 75.3%;
+      width: 70.373%;
       max-width: unset;
       position: absolute;
       top: 50%;
@@ -92,52 +101,66 @@
   }
 
   &_6 {
+    --note-ratio: 517 / 759;
+
     z-index: 6;
-    width: 31.37%;
-    top: 3.87%;
-    left: 59.33%;
+    width: 24.875%;
+    top: 5.282%;
+    left: 63.564%;
   }
 
   &_7 {
+    --note-ratio: 1080 / 842;
+
     z-index: 7;
-    width: 65.94%;
-    top: 23.79%;
-    left: 22.14%;
+    width: 46.394%;
+    top: 28.031%;
+    left: 32.106%;
   }
 
   &_8 {
+    --note-ratio: 553 / 612;
+
     z-index: 8;
-    width: 22.36%;
-    top: 41.19%;
-    left: 20.22%;
+    width: 16.778%;
+    top: 41.352%;
+    left: 23.102%;
   }
 
   &_9 {
+    --note-ratio: 745 / 544;
+
     z-index: 9;
-    width: 34.01%;
-    top: 33.95%;
-    left: 51.53%;
+    width: 30.092%;
+    top: 38.477%;
+    left: 53.59%;
   }
 
   &_10 {
+    --note-ratio: 539 / 699;
+
     z-index: 10;
-    width: 27.64%;
-    top: 44.12%;
-    left: 66.68%;
+    width: 25.123%;
+    top: 46.421%;
+    left: 67.379%;
   }
 
   &_11 {
+    --note-ratio: 628 / 485;
+
     z-index: 11;
-    width: 24.97%;
-    top: 68.4%;
-    left: 75.02%;
+    width: 23.37%;
+    top: 68.549%;
+    left: 76.322%;
   }
 
   &_12 {
+    --note-ratio: 659 / 484;
+
     z-index: 12;
-    width: 32.59%;
-    top: 61.92%;
-    left: 31.4%;
+    width: 22.945%;
+    top: 70.839%;
+    left: 37.006%;
   }
 }
 
@@ -156,8 +179,11 @@
   }
 
   .about__note {
-    width: 100%;
-    min-height: 320px;
+    --note-max-height: 360px;
+
+    width: min(100%, calc(var(--note-max-height) * var(--note-ratio)));
+    aspect-ratio: var(--note-ratio);
+    min-height: 0;
     position: relative;
     top: auto;
     left: auto;
@@ -167,18 +193,19 @@
     justify-content: center;
 
     img {
-      width: auto;
-      max-width: 100%;
-      max-height: 360px;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
     }
 
     &_5 {
-      aspect-ratio: auto;
+      aspect-ratio: var(--note-ratio);
 
       img {
-        width: auto;
-        max-width: 80%;
-        max-height: 360px;
+        width: 70.373%;
+        height: auto;
+        max-width: none;
       }
     }
   }
@@ -199,21 +226,24 @@
   pointer-events: none;
   cursor: zoom-out;
   background-color: rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(0);
-  -webkit-backdrop-filter: blur(0);
-  transition: opacity 260ms ease-in-out, visibility 260ms ease-in-out,
-    backdrop-filter 260ms ease-in-out, -webkit-backdrop-filter 260ms ease-in-out;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 520ms;
+  will-change: opacity;
+
+  &_prepared {
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
 
   &_active {
-    visibility: visible;
     opacity: 1;
-    pointer-events: auto;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 
     .note-popup__image {
       opacity: 1;
-      transform: scale(1);
+      transform: translateY(0) scale(1);
     }
   }
 }
@@ -224,9 +254,10 @@
   object-fit: contain;
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.72);
+  transform: translateY(10px) scale(0.88);
   filter: drop-shadow(0 16px 35px rgba(0, 0, 0, 0.45));
-  transition: opacity 260ms ease-in-out, transform 320ms ease-in-out;
+  transition: opacity 300ms ease, transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 @media (max-width: 576px) {
@@ -240,19 +271,7 @@
   }
 
   .about__note {
-    min-height: 0;
-
-    img {
-      max-height: 70vh;
-    }
-
-    &_5 {
-      min-height: 270px;
-
-      img {
-        max-height: min(82vw, 360px);
-      }
-    }
+    --note-max-height: min(70vh, 460px);
   }
 
   .note-popup {
@@ -262,5 +281,13 @@
   .note-popup__image {
     width: 94vw;
     height: 88vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__note img,
+  .note-popup,
+  .note-popup__image {
+    transition-duration: 1ms;
   }
 }

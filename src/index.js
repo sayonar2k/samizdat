@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const menuMobile = document.querySelector('.mobile-block');
             const btnCloseMobileMenu = document.querySelector('.mobile-menu__close');
 
+            if (!buttonMobile || !menuMobile || !btnCloseMobileMenu) {
+                return;
+            }
+
             buttonMobile.onclick = () => {
                 menuMobile.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -144,26 +148,57 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        let closeTimer;
+        let openRequest = 0;
+
         const closeNote = () => {
+            openRequest += 1;
+            window.clearTimeout(closeTimer);
             popup.classList.remove('note-popup_active');
-            popup.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
+
+            closeTimer = window.setTimeout(() => {
+                popup.classList.remove('note-popup_prepared');
+                popup.setAttribute('aria-hidden', 'true');
+            }, 520);
         }
 
         notes.forEach(note => {
-            note.onclick = () => {
+            note.onclick = async () => {
                 const image = note.querySelector('img');
 
                 if (!image) {
                     return;
                 }
 
+                const requestId = ++openRequest;
+
+                window.clearTimeout(closeTimer);
                 popupImage.src = image.src;
                 popupImage.alt = image.alt;
-                popup.classList.add('note-popup_active');
+
+                try {
+                    await popupImage.decode();
+                } catch (error) {
+                    // The browser can still display the image if decode is unavailable.
+                }
+
+                if (requestId !== openRequest) {
+                    return;
+                }
+
+                popup.classList.add('note-popup_prepared');
                 popup.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
                 popup.focus();
+
+                window.requestAnimationFrame(() => {
+                    window.requestAnimationFrame(() => {
+                        if (requestId === openRequest) {
+                            popup.classList.add('note-popup_active');
+                        }
+                    })
+                })
             }
         })
 
@@ -174,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && popup.classList.contains('note-popup_active')) {
+            if (e.key === 'Escape' && popup.classList.contains('note-popup_prepared')) {
                 closeNote();
             }
         })

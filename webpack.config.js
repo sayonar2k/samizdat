@@ -41,6 +41,14 @@ export default ({ develop }) => ({
             template: path.resolve(__dirname, "./src/about.html"),
             filename: "about.html",
         }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "./src/secret-folder.html"),
+            filename: "secret-folder.html",
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "./src/404.html"),
+            filename: "404.html",
+        }),
         new MiniCssExtractPlugin({
             filename: "./styles/main.css",
         })

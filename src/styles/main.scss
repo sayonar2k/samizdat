@@ -7,6 +7,8 @@
 @use "popup";
 @use "contacts";
 @use "about";
+@use "secret-folder";
+@use "error";
 
 .disabled {
   pointer-events: none;
