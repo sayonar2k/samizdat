@@ -19,30 +19,71 @@
 
 .error__code {
   width: 100%;
-  height: 262px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  height: auto;
+  aspect-ratio: 790 / 270;
   position: relative;
 }
 
 .error__digit {
+  position: absolute;
+  z-index: 0;
+  top: 5.2%;
   width: 37%;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 256px;
   font-weight: 700;
   line-height: 0.86;
-  margin-top: 14px;
+
+  &_left {
+    left: 0;
+    transform: translateX(14%);
+  }
+
+  &_right {
+    right: 0;
+    transform: translateX(-14%);
+  }
 }
 
-.error__cat {
-  width: 32.05%;
-  height: 248px;
+.error__rat {
+  width: 32.15%;
+  aspect-ratio: 254 / 270;
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 50%;
-  object-fit: fill;
+  cursor: pointer;
   transform: translateX(-50%);
+
+  @media (hover: hover) {
+    &:hover .error__rat-image_active {
+      transform: translate(-50%, -50%) scale(1.025);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 5px;
+  }
+}
+
+.error__rat-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.98);
+  transition: opacity 180ms ease, transform 220ms ease;
+
+  &_active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .error__description {
@@ -69,14 +110,6 @@
     font-size: clamp(132px, 29.5vw, 224px);
   }
 
-  .error__code {
-    height: auto;
-    aspect-ratio: 790 / 262;
-  }
-
-  .error__cat {
-    height: 94.66%;
-  }
 }
 
 @media (max-width: 576px) {

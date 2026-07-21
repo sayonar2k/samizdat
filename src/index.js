@@ -215,12 +215,34 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    const initErrorPage = () => {
+        const ratButton = document.querySelector('.error__rat');
+        const rats = document.querySelectorAll('.error__rat-image');
+
+        if (!ratButton || rats.length === 0) {
+            return;
+        }
+
+        let activeRat = 0;
+
+        ratButton.onclick = () => {
+            rats[activeRat].classList.remove('error__rat-image_active');
+            activeRat = (activeRat + 1) % rats.length;
+            rats[activeRat].classList.add('error__rat-image_active');
+            ratButton.setAttribute('aria-label', `Показать следующую крысу. Сейчас крыса ${activeRat + 1} из ${rats.length}`);
+        }
+    }
+
     if (pathname.includes('content.html')) {
         initContentPage();
     }
 
     if (pathname.includes('about.html')) {
         initAboutPage();
+    }
+
+    if (pathname.includes('404.html')) {
+        initErrorPage();
     }
 
 })

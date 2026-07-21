@@ -53,9 +53,13 @@
             <section class="error" aria-labelledby="error-title">
                 <h1 class="error__title" id="error-title">ERROR</h1>
                 <div class="error__code" aria-label="404">
-                    <span class="error__digit">4</span>
-                    <img class="error__cat" src="./images/icons/404-cat.svg" alt="" width="253" height="248">
-                    <span class="error__digit">4</span>
+                    <span class="error__digit error__digit_left" aria-hidden="true">4</span>
+                    <button class="error__rat" type="button" aria-label="Показать следующую крысу. Сейчас крыса 1 из 3">
+                        <img class="error__rat-image error__rat-image_active" src="./images/icons/404-rat-1.png" alt="" width="254" height="248">
+                        <img class="error__rat-image" src="./images/icons/404-rat-2.png" alt="" width="246" height="270">
+                        <img class="error__rat-image" src="./images/icons/404-rat-3.png" alt="" width="245" height="249">
+                    </button>
+                    <span class="error__digit error__digit_right" aria-hidden="true">4</span>
                 </div>
                 <p class="error__description">THIS PAGE DOES NOT EXIST</p>
             </section>
