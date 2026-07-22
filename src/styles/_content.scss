@@ -17,6 +17,8 @@
     max-width: 495px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
 
   &__placeholder {
