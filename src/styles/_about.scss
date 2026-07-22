@@ -278,8 +278,10 @@
 }
 
 .note-popup__image {
-  width: min(88vw, 1040px);
-  height: min(82vh, 820px);
+  width: auto;
+  height: auto;
+  max-width: min(88vw, 1040px);
+  max-height: min(82vh, 820px);
   object-fit: contain;
   opacity: 0;
   pointer-events: auto;
@@ -313,8 +315,8 @@
   }
 
   .note-popup__image {
-    width: 94vw;
-    height: 88vh;
+    max-width: 94vw;
+    max-height: 88vh;
   }
 }
 
