@@ -1,19 +1,16 @@
 .report {
   padding-top: 100px;
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 
   @media (max-width: 1020px) {
-    gap: 12px
+    gap: 12px;
   }
 
   @media (max-width: 540px) {
-    flex-direction: column;
-
-    img {
-      margin: auto;
-    }
+    padding-top: 72px;
+    display: block;
   }
 
   &__title {
@@ -33,27 +30,102 @@
     }
   }
 
-  &__center {
-    @media (max-width: 540px) {
-      order: -1;
+  &__left,
+  &__center,
+  &__right {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+
+    @media (max-width: 1020px) {
+      gap: 12px;
     }
   }
 
-  & > * {
-    display: flex;
-    flex-direction: column;
-    width: calc((100% / 3) - (40px / 3));
-    flex-shrink: 1;
-    gap: 20px;
-
-    @media (max-width: 1020px) {
-      width: calc((100% / 3) - 4px);
-      gap: 12px;
-    }
-
+  &__left,
+  &__right {
     @media (max-width: 540px) {
-      width: 100%;
-      gap: 20px;
+      display: none;
     }
+  }
+
+  &__center {
+    @media (max-width: 540px) {
+      display: block;
+
+      > img {
+        display: none;
+      }
+    }
+  }
+
+  &__left img,
+  &__center img,
+  &__right img {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    display: block;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+.report__carousel {
+  display: none;
+
+  @media (max-width: 540px) {
+    display: block;
+    margin-top: 24px;
+  }
+}
+
+.report__track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.report__slide {
+  min-width: 0;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.report__counter {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 540px) {
+  .report__center > img {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .report__track {
+    scroll-behavior: auto;
   }
 }

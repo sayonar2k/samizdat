@@ -53,6 +53,83 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const initReportCarousels = () => {
+        const reports = document.querySelectorAll('.report');
+        const cleanups = [];
+
+        reports.forEach(report => {
+            const images = report.querySelectorAll('.report__left img, .report__center img, .report__right img');
+
+            if (images.length === 0) {
+                return;
+            }
+
+            const carousel = document.createElement('div');
+            const track = document.createElement('div');
+            const counter = document.createElement('p');
+
+            carousel.className = 'report__carousel';
+            carousel.setAttribute('aria-label', 'Карусель фотоотчёта');
+            track.className = 'report__track';
+            counter.className = 'report__counter';
+            counter.setAttribute('aria-live', 'polite');
+
+            images.forEach((image, index) => {
+                const slide = document.createElement('div');
+                const slideImage = image.cloneNode(true);
+
+                slide.className = 'report__slide';
+                slide.setAttribute('aria-label', `${index + 1} из ${images.length}`);
+                slideImage.removeAttribute('class');
+                slide.append(slideImage);
+                track.append(slide);
+            })
+
+            counter.textContent = `1 / ${images.length}`;
+            carousel.append(track, counter);
+            report.append(carousel);
+
+            const slides = track.querySelectorAll('.report__slide');
+            let scrollFrame;
+
+            const updateCounter = () => {
+                scrollFrame = undefined;
+                const trackLeft = track.getBoundingClientRect().left;
+                let activeSlide = 0;
+                let nearestDistance = Infinity;
+
+                slides.forEach((slide, index) => {
+                    const distance = Math.abs(slide.getBoundingClientRect().left - trackLeft);
+
+                    if (distance < nearestDistance) {
+                        activeSlide = index;
+                        nearestDistance = distance;
+                    }
+                });
+
+                counter.textContent = `${activeSlide + 1} / ${slides.length}`;
+            }
+
+            const scheduleCounterUpdate = () => {
+                if (!scrollFrame) {
+                    scrollFrame = window.requestAnimationFrame(updateCounter);
+                }
+            }
+
+            track.addEventListener('scroll', scheduleCounterUpdate, {passive: true});
+            window.addEventListener('resize', scheduleCounterUpdate);
+
+            cleanups.push(() => {
+                window.cancelAnimationFrame(scrollFrame);
+                track.removeEventListener('scroll', scheduleCounterUpdate);
+                window.removeEventListener('resize', scheduleCounterUpdate);
+                carousel.remove();
+            });
+        });
+
+        return () => cleanups.forEach(cleanup => cleanup());
+    }
+
     const initContentPage = () => {
         const blockDropsBtns = document.querySelectorAll('.block-drops__btn');
         const popupQuestion = document.getElementById('popup2');
@@ -62,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const disabledCollectedLinks = document.querySelectorAll('.collection__item.disabled');
         const sections = document.querySelectorAll('.content-edition');
         const links = document.querySelectorAll('.collection__link');
+        const cleanupReportCarousels = initReportCarousels();
 
         disabledCollectedLinks.forEach(link => {
             link.classList.remove('disabled');
@@ -156,12 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.cancelAnimationFrame(scrollFrame);
             window.removeEventListener('scroll', scheduleActiveSectionUpdate);
             window.removeEventListener('resize', scheduleActiveSectionUpdate);
+            cleanupReportCarousels();
             closeQuestion();
         }
     }
 
     const initAboutPage = () => {
-        const notes = document.querySelectorAll('.about__note');
+        const notes = document.querySelectorAll('[data-note-popup]');
         const popup = document.getElementById('note-popup');
         const popupImage = popup?.querySelector('.note-popup__image');
 
@@ -203,6 +282,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.clearTimeout(closeTimer);
                 popupImage.src = image.src;
                 popupImage.alt = image.alt;
+
+                const popupScale = Number(note.dataset.popupScale) || 1;
+                popupImage.style.setProperty('--popup-open-scale', popupScale.toString());
+                popupImage.style.setProperty('--popup-closed-scale', (popupScale * 0.88).toFixed(3));
 
                 try {
                     await popupImage.decode();
@@ -283,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (document.querySelector('.about__note')) {
+        if (document.querySelector('[data-note-popup]')) {
             const cleanupAbout = initAboutPage();
 
             if (cleanupAbout) {

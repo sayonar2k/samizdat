@@ -1,19 +1,26 @@
 .about-main {
   min-width: 0;
+  z-index: 0;
 }
 
 .about {
   width: min(100%, 1054px);
   aspect-ratio: 1054 / 790;
   position: relative;
+  z-index: 0;
+  isolation: isolate;
   flex-shrink: 0;
-  cursor: pointer;
+  cursor: default;
+}
+
+.about-mobile {
+  display: none;
 }
 
 .about__note {
   position: absolute;
   line-height: 0;
-  cursor: pointer;
+  cursor: default;
   overflow: visible;
 
   img {
@@ -24,8 +31,12 @@
     transition: filter 220ms ease, transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  &[data-note-popup] {
+    cursor: pointer;
+  }
+
   @media (hover: hover) {
-    &:hover {
+    &[data-note-popup]:hover {
       z-index: 20;
 
       img {
@@ -168,45 +179,62 @@
 @media (max-width: 1020px) {
   .about-main {
     padding: 20px 0 40px;
+    align-items: flex-start !important;
   }
 
-  .about {
+  .about_desktop {
+    display: none;
+  }
+
+  .about-mobile {
     width: min(100%, 820px);
-    aspect-ratio: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .about_overview {
+    width: 100%;
+    aspect-ratio: 1054 / 790;
+    pointer-events: none;
+  }
+
+  .about-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
-    gap: 32px 24px;
+    gap: 48px 28px;
   }
 
-  .about__note {
-    --note-max-height: 360px;
-
-    width: min(100%, calc(var(--note-max-height) * var(--note-ratio)));
-    aspect-ratio: var(--note-ratio);
-    min-height: 0;
-    position: relative;
-    top: auto;
-    left: auto;
-    z-index: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .about-list__note {
+    max-width: 100%;
+    line-height: 0;
+    justify-self: center;
+    cursor: pointer;
 
     img {
-      width: 100%;
-      height: 100%;
-      max-width: none;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 360px;
       object-fit: contain;
+      transition: filter 220ms ease, transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    &_5 {
-      aspect-ratio: var(--note-ratio);
+    @media (hover: hover) {
+      &:hover img {
+        filter: brightness(1.08);
+        transform: scale(1.018);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.8);
+      outline-offset: 4px;
 
       img {
-        width: 70.373%;
-        height: auto;
-        max-width: none;
+        filter: brightness(1.08);
       }
     }
   }
@@ -244,7 +272,7 @@
 
     .note-popup__image {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0) scale(var(--popup-open-scale, 1));
     }
   }
 }
@@ -254,8 +282,9 @@
   height: min(82vh, 820px);
   object-fit: contain;
   opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px) scale(0.88);
+  pointer-events: auto;
+  cursor: default;
+  transform: translateY(10px) scale(var(--popup-closed-scale, 0.88));
   filter: drop-shadow(0 16px 35px rgba(0, 0, 0, 0.45));
   transition: opacity 300ms ease, transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
@@ -266,13 +295,17 @@
     padding: 10px 0 30px;
   }
 
-  .about {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 30px;
+  .about-mobile {
+    gap: 54px;
   }
 
-  .about__note {
-    --note-max-height: min(70vh, 460px);
+  .about-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .about-list__note img {
+    max-height: min(70svh, 460px);
   }
 
   .note-popup {
@@ -287,6 +320,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .about__note img,
+  .about-list__note img,
   .note-popup,
   .note-popup__image {
     transition-duration: 1ms;
