@@ -131,6 +131,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const initContentPage = () => {
+        const productNotes = {
+            'flower-children': {
+                title: 'FLOWER CHILDREN',
+                description: 'Когда все вокруг начинает рушиться, человек все равно продолжает рисовать цветы. Не потому что это что-то изменит. Просто иначе жить становится невозможно.'
+            },
+            'old-cavity': {
+                title: 'OLD CAVITY',
+                description: 'Со временем посредственность перестает раздражать. Она просто становится частью тебя. В какой-то момент понимаешь, что пора наконец выплюнуть все, что годами застревало под деснами. Your Move.'
+            },
+            'the-mills-of-god': {
+                title: 'THE MILLS OF GOD',
+                description: 'Истекай кровью ради меня. Голос тех, кто в свое время говорил без оглядки на правила.'
+            },
+            'cielo-drive': {
+                title: 'CIELO DRIVE, 10050',
+                description: 'С одной стороны — половина лица, которой мир поверил. С другой — вся Семья в идеальном треугольнике. Love & Terror Cult.'
+            },
+            'dystopia-1968': {
+                title: 'DYSTOPIA, 1968',
+                description: 'Joy. Comfort. Trust. Утопия в чистом виде. Радость и доверие к месту, где все должно быть безопасно и волшебно. В 1968 году те, кто поверил в эту улыбку, столкнулись с совсем другой очередью.'
+            },
+            'corp-values': {
+                title: 'CORP. VALUES',
+                description: 'Корпоративные ценности в чистом виде. Носи с гордостью.'
+            },
+            'cielo-drive-one': {
+                title: 'CIELO DRIVE, 10050 (1/1)',
+                description: 'Она никогда не должна была быть красной. Именно поэтому все наконец встало на свои места.'
+            },
+            'hated-in-the-nation': {
+                title: 'HATED IN THE NATION',
+                description: 'Некоторые люди всю жизнь пытаются заслужить любовь. Другие делают все, чтобы стать ее полной противоположностью. И оба способа одинаково плохо заканчиваются.'
+            },
+            'socialism': {
+                title: 'РАЗВИТОЙ СОЦИАЛИЗМ',
+                description: 'Газеты обещали, что это последняя глава. Через несколько лет ими уже заворачивали другие новости. Фотографии остались.'
+            },
+            'silly-king': {
+                title: 'SILLY KING',
+                description: 'Власть редко выглядит величественно. Чаще она выглядит смешно, пока окружающие продолжают делать вид, что всё происходит всерьез. Короны ничего не меняют.'
+            },
+            'spirit-of-freedom': {
+                title: 'SPIRIT OF FREEDOM',
+                description: 'Школьная фотография никогда не обещает, кем станет человек. Одни взрослеют, другие начинают действовать. Sick clothes for sick people.'
+            }
+        };
         const blockDropsBtns = document.querySelectorAll('.block-drops__btn');
         const popupQuestion = document.getElementById('popup2');
         const popupQuestionClose = document.querySelector('.question-content__close');
@@ -154,15 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
             blockDropsBtns.forEach(blockDropsBtn => {
                 blockDropsBtn.onclick = () => {
                     const parentElement = blockDropsBtn.closest('.block-drops__item');
-                    const contentTitle = parentElement?.querySelector('.block-drops__title')?.innerHTML;
-                    const contentDescription = parentElement?.querySelector('.block-drops__description')?.innerHTML;
+                    const productNote = productNotes[parentElement?.dataset.note];
 
-                    if (!contentTitle || !contentDescription) {
+                    if (!productNote) {
                         return;
                     }
 
-                    popupQuestionTitle.innerHTML = contentTitle;
-                    popupQuestionDescription.innerHTML = contentDescription;
+                    popupQuestionTitle.textContent = productNote.title;
+                    popupQuestionDescription.textContent = productNote.description;
                     popupQuestion.classList.add('question-mark-popup_active');
                     document.body.style.overflow = 'hidden';
                 }
