@@ -28,14 +28,20 @@
     }
   }
 
-  &_v2, &_v3 {
+  &_v2, &_special, &_v3 {
     padding-top: 100px;
     scroll-margin-top: 100px;
   }
 
-  &_v3 {
-    gap: 64px;
-    padding-bottom: 160px;
+  &_special .title-h2__title {
+    @media (max-width: 576px) {
+      font-size: clamp(18px, 4.5vw, 26px);
+    }
+  }
+
+  &__secret {
+    padding-top: 100px;
+    padding-bottom: 128px;
   }
 }
 

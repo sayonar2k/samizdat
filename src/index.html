@@ -33,24 +33,27 @@
                 <p class="logo-items__description">OF&nbsp;INDEPENDENT&nbsp;AUTHORS</p>
             </div>
         </a>
-        <ul class="collection">
+        <ul class="collection" aria-label="Издания и спецвыпуски">
             <li class="collection__item">
-                <a href="./content.html#edition1" class="collection__link">
-                    Издание 1
-                </a>
+                <button class="collection__toggle" type="button" aria-expanded="false" aria-controls="editions-menu">
+                    Издания
+                </button>
+                <ul class="collection__list collection__list_editions" id="editions-menu">
+                    <li><a href="./content.html#edition1" class="collection__link" aria-label="Издание 01">01</a></li>
+                    <li><a href="./content.html#edition2" class="collection__link" aria-label="Издание 02">02</a></li>
+                    <li><a href="./content.html#edition3" class="collection__link" aria-label="Издание 03">03</a></li>
+                </ul>
             </li>
             <li class="collection__item">
-                <a href="./content.html#edition2" class="collection__link">
-                    Издание 2
-                </a>
-            </li>
-            <li class="collection__item">
-                <a href="./content.html#edition3" class="collection__link">
-                    Издание 3
-                </a>
+                <button class="collection__toggle" type="button" aria-expanded="false" aria-controls="specials-menu">
+                    Спецвыпуски
+                </button>
+                <ul class="collection__list collection__list_specials" id="specials-menu">
+                    <li><a href="./content.html#the-mysterious-monk" class="collection__link">The Mysterious Monk</a></li>
+                </ul>
             </li>
         </ul>
-        <nav class="navigation">
+        <nav class="navigation" aria-label="О проекте">
             <a href="./contacts.html" class="navigation__link">
                 Контакты
             </a>
@@ -58,8 +61,8 @@
                 О нас
             </a>
         </nav>
-        <button class="mobile-btn">
-            <img src="./images/icons/burger-menu.svg" alt="Меню" width="30" height="30">
+        <button class="mobile-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+            <img src="./images/icons/burger-menu.svg" alt="" width="30" height="30">
         </button>
     </div>
 </header>
@@ -388,6 +391,63 @@
                             <img width="444" height="580" src="./images/report/v2/right_3.jpg" alt="Фотоотчет 8" class="report__right-third">
                         </div>
                     </section>
+                    <section class="content-edition content-edition_special" id="the-mysterious-monk">
+                        <div class="title-h2">
+                            <div class="title-h2__main">
+                                <div class="title-h2__dash"></div>
+                                <span class="title-h2__title">THE MYSTERIOUS MONK</span>
+                                <div class="title-h2__dash"></div>
+                            </div>
+                            <p class="title-h2__submain">
+                                ВЫПУЩЕНО 28.07.26
+                            </p>
+                        </div>
+                        <div class="block-drops content-edition__drops">
+                            <div class="block-drops__item" data-note="1916">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/1916_1.png" alt="1916 изображение спереди">
+                                    <button class="block-drops__btn" type="button">
+                                        <img loading="lazy" src="./images/icons/question.svg" alt="Иконка подсказки">
+                                    </button>
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/1916_2.png" alt="1916 изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        1916
+                                    </div>
+                                    <p class="block-drops__description">
+                                        ЛОНГСЛИВ ИЗ 70% ХЛОПКА, 30% ПОЛИЭСТРА. СВОБОДНЫЙ, СЛЕГКА УКОРОЧЕННЫЙ СИЛУЭТ.
+                                        ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ СЗАДИ. РУЧНОЙ ПАТЧ ВОРКИНГ НА СПИНЕ.
+                                        КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                        ИЗДЕЛИЕ ВКЛЮЧАЕТ В СЕБЯ СЛУЧАЙНЫЕ МЕДАЛИ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 3
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="report-the-mysterious-monk" class="report report_special">
+                        <div class="report__left">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/left_1.png" alt="The Mysterious Monk — фотоотчет 1" class="report__left-first">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/left_2.png" alt="The Mysterious Monk — фотоотчет 2" class="report__left-second">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/left_3.png" alt="The Mysterious Monk — фотоотчет 3" class="report__left-third">
+                        </div>
+                        <div class="report__center">
+                            <h2 class="report__title">
+                                Фотоотчет
+                            </h2>
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/center_1.png" alt="The Mysterious Monk — фотоотчет 4" class="report__center-first">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/center_2.png" alt="The Mysterious Monk — фотоотчет 5" class="report__center-second">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/center_3.png" alt="The Mysterious Monk — фотоотчет 6" class="report__center-third">
+                        </div>
+                        <div class="report__right">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/right_1.png" alt="The Mysterious Monk — фотоотчет 7" class="report__right-first">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/right_2.png" alt="The Mysterious Monk — фотоотчет 8" class="report__right-second">
+                            <img width="444" height="580" loading="lazy" src="./images/report/the-mysterious-monk/right_3.png" alt="The Mysterious Monk — фотоотчет 9" class="report__right-third">
+                        </div>
+                    </section>
                     <section class="content-edition content-edition_v3" id="edition3">
                         <div class="title-h2">
                             <div class="title-h2__main">
@@ -396,13 +456,162 @@
                                 <div class="title-h2__dash"></div>
                             </div>
                             <p class="title-h2__submain">
-                                Скоро
+                                ВЫПУЩЕНО 26.08.26
                             </p>
                         </div>
-                        <a class="content-edition__go" href="./secret-folder.html">
-                            <img width="441" height="439" src="./images/v3_placeholder.svg" alt="Перейти в secret folder" class="content-edition__placeholder">
-                        </a>
+                        <div class="block-drops content-edition__drops">
+                            <div class="block-drops__item" data-note="l-armee-rouge">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/l_armee_rouge_1.png" alt="L'ARMEE ROUGE изображение спереди">
+                                    <button class="block-drops__btn" type="button">
+                                        <img loading="lazy" src="./images/icons/question.svg" alt="Иконка подсказки">
+                                    </button>
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/l_armee_rouge_2.png" alt="L'ARMEE ROUGE изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        L'ARMEE ROUGE
+                                    </div>
+                                    <p class="block-drops__description">
+                                        ФУТБОЛКА ИЗ 100% ХЛОПКА. BOXY-СИЛУЭТ. ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ
+                                        ПЛАСТИЗОЛЬНЫМИ КРАСКАМИ СПЕРЕДИ И СЗАДИ. ДИСТРЕСС ПО ВСЕМУ ИЗДЕЛИЮ.
+                                        ПРИНТ СО ВРЕМЕНЕМ ТРЕСКАЕТСЯ. КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ
+                                        ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 7
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="block-drops__item" data-note="tokyo-lucky-hole">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/tokyo_lucky_hole_1.png" alt="TOKYO LUCKY HOLE изображение спереди">
+                                    <button class="block-drops__btn" type="button">
+                                        <img loading="lazy" src="./images/icons/question.svg" alt="Иконка подсказки">
+                                    </button>
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/tokyo_lucky_hole_2.png" alt="TOKYO LUCKY HOLE изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        TOKYO LUCKY HOLE
+                                    </div>
+                                    <p class="block-drops__description">
+                                        СВИТШОТ ИЗ 100% ХЛОПКА. УКОРОЧЕННЫЙ СИЛУЭТ, ШИРОКИЕ ДЛИННЫЕ РУКАВА.
+                                        ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ ПЛАСТИЗОЛЬНЫМИ КРАСКАМИ СПЕРЕДИ И СЗАДИ.
+                                        ПРИНТ СО ВРЕМЕНЕМ ТРЕСКАЕТСЯ. КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ
+                                        ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 10
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="block-drops__item" data-note="russian-ballet-troupe">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/russian_ballet_troupe_1.png" alt="РУССКАЯ БАЛЕТНАЯ ТРУППА изображение спереди">
+                                    <button class="block-drops__btn" type="button">
+                                        <img loading="lazy" src="./images/icons/question.svg" alt="Иконка подсказки">
+                                    </button>
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/russian_ballet_troupe_2.png" alt="РУССКАЯ БАЛЕТНАЯ ТРУППА изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        РУССКАЯ БАЛЕТНАЯ ТРУППА
+                                    </div>
+                                    <p class="block-drops__description">
+                                        ХУДИ ИЗ 100% ХЛОПКА. СВОБОДНЫЙ, СЛЕГКА УКОРОЧЕННЫЙ СИЛУЭТ.
+                                        ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ СПЕРЕДИ И СЗАДИ. ВНУТРЕННИЙ ВОРС.
+                                        КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 15
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="block-drops__item">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/nizhe_dna_1.png" alt="НИЖЕ ДНА изображение спереди">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/nizhe_dna_2.png" alt="НИЖЕ ДНА изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        НИЖЕ ДНА
+                                    </div>
+                                    <p class="block-drops__description">
+                                        ФУТБОЛКА ИЗ 100% ХЛОПКА. BOXY-СИЛУЭТ. ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ
+                                        ПЛАСТИЗОЛЬНЫМИ КРАСКАМИ СПЕРЕДИ И СЗАДИ. ДИСТРЕСС ПО ВСЕМУ ИЗДЕЛИЮ.
+                                        ПРИНТ СО ВРЕМЕНЕМ ТРЕСКАЕТСЯ. КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ
+                                        ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 7
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="block-drops__item">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/after_the_dream_1.png" alt="AFTER THE DREAM изображение спереди">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/after_the_dream_2.png" alt="AFTER THE DREAM изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        AFTER THE DREAM
+                                    </div>
+                                    <p class="block-drops__description">
+                                        ФУТБОЛКА ИЗ 100% ХЛОПКА. BOXY-СИЛУЭТ. ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ
+                                        ПЛАСТИЗОЛЬНЫМИ КРАСКАМИ СПЕРЕДИ И СЗАДИ. ДИСТРЕСС ПО ВСЕМУ ИЗДЕЛИЮ.
+                                        ПРИНТ СО ВРЕМЕНЕМ ТРЕСКАЕТСЯ. КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ
+                                        ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 15
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="block-drops__item">
+                                <div class="block-drops__row">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/red_resurrection_1.png" alt="RED RESURRECTION изображение спереди">
+                                    <img width="444" height="444" loading="lazy" src="./images/drops/red_resurrection_2.png" alt="RED RESURRECTION изображение сзади">
+                                </div>
+                                <div class="block-drops__texts">
+                                    <div class="block-drops__title">
+                                        RED RESURRECTION
+                                    </div>
+                                    <p class="block-drops__description">
+                                        ФУТБОЛКА ИЗ 100% ХЛОПКА. BOXY-СИЛУЭТ. ШЕЛКОГРАФИЧЕСКИЙ ПРИНТ
+                                        ПЛАСТИЗОЛЬНЫМИ КРАСКАМИ СПЕРЕДИ И СЗАДИ. ДИСТРЕСС ПО ВСЕМУ ИЗДЕЛИЮ.
+                                        ПРИНТ СО ВРЕМЕНЕМ ТРЕСКАЕТСЯ. КАЖДЫЙ ЭКЗЕМПЛЯР УНИКАЛЕН И ОБЛАДАЕТ
+                                        ИНДИВИДУАЛЬНЫМ ХАРАКТЕРОМ.
+                                    </p>
+                                    <span class="block-drops__count">
+                                        ВЫПУЩЕНО ЭКЗЕМПЛЯРОВ: 7
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </section>
+                    <section id="report3" class="report report_v3">
+                        <div class="report__left">
+                            <img width="444" height="580" loading="lazy" src="./images/report/v3/left_1.png" alt="Издание 3 — фотоотчет 1" class="report__left-first">
+                            <img width="444" height="580" loading="lazy" src="./images/report/v3/left_2.png" alt="Издание 3 — фотоотчет 2" class="report__left-second">
+                        </div>
+                        <div class="report__center">
+                            <h2 class="report__title">
+                                Фотоотчет
+                            </h2>
+                            <img width="444" height="580" loading="lazy" src="./images/report/v3/center_1.png" alt="Издание 3 — фотоотчет 3" class="report__center-first">
+                            <img width="444" height="580" loading="lazy" src="./images/report/v3/center_2.png" alt="Издание 3 — фотоотчет 4" class="report__center-second">
+                        </div>
+                        <div class="report__right">
+                            <img width="444" height="580" loading="lazy" src="./images/report/v3/right_1.png" alt="Издание 3 — фотоотчет 5" class="report__right-first">
+                            <img width="444" height="580" loading="lazy" src="./images/report/v3/right_2.png" alt="Издание 3 — фотоотчет 6" class="report__right-second">
+                        </div>
+                    </section>
+                    <div class="content-edition__secret">
+                        <a class="content-edition__go" href="./secret-folder.html">
+                            <img width="441" height="439" loading="lazy" src="./images/v3_placeholder.svg" alt="Перейти в secret folder" class="content-edition__placeholder">
+                        </a>
+                    </div>
                 </div>
             </main>
             <footer class="footer">
@@ -412,19 +621,29 @@
         </div>
     </div>
 
-    <div class="mobile-block" id="popup1">
-        <div class="mobile-menu__close">
-            <img src="images/icons/close.svg" alt="Закрыть меню">
+    <div class="mobile-block" id="mobile-menu" aria-hidden="true">
+    <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">
+        <img src="./images/icons/close.svg" alt="">
+    </button>
+    <nav class="mobile-menu" aria-label="Главное меню">
+        <div class="mobile-menu__group">
+            <span class="mobile-menu__title">Издания</span>
+            <ul class="mobile-menu__list mobile-menu__list_editions">
+                <li><a href="./content.html#edition1" class="collection__link" aria-label="Издание 01">01</a></li>
+                <li><a href="./content.html#edition2" class="collection__link" aria-label="Издание 02">02</a></li>
+                <li><a href="./content.html#edition3" class="collection__link" aria-label="Издание 03">03</a></li>
+            </ul>
         </div>
-        <nav class="mobile-menu">
-            <a href="./contacts.html" class="navigation__link">
-                Контакты
-            </a>
-            <a href="./about.html" class="navigation__link">
-                О нас
-            </a>
-        </nav>
-    </div>
+        <div class="mobile-menu__group">
+            <span class="mobile-menu__title">Спецвыпуски</span>
+            <ul class="mobile-menu__list mobile-menu__list_specials">
+                <li><a href="./content.html#the-mysterious-monk" class="collection__link">The Mysterious Monk</a></li>
+            </ul>
+        </div>
+        <a href="./contacts.html" class="navigation__link">Контакты</a>
+        <a href="./about.html" class="navigation__link">О нас</a>
+    </nav>
+</div>
 
     <div class="question-mark-popup" id="popup2">
         <div class="question-mark-popup__content question-content">
