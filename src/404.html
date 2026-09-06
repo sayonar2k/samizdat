@@ -32,22 +32,35 @@
                 <p class="logo-items__description">OF&nbsp;INDEPENDENT&nbsp;AUTHORS</p>
             </div>
         </a>
-        <ul class="collection">
+        <ul class="collection" aria-label="Издания и спецвыпуски">
             <li class="collection__item">
-                <a href="./content.html#edition1" class="collection__link">Издание 1</a>
+                <button class="collection__toggle" type="button" aria-expanded="false" aria-controls="editions-menu">
+                    Издания
+                </button>
+                <ul class="collection__list collection__list_editions" id="editions-menu">
+                    <li><a href="./content.html#edition1" class="collection__link" aria-label="Издание 01">01</a></li>
+                    <li><a href="./content.html#edition2" class="collection__link" aria-label="Издание 02">02</a></li>
+                    <li><a href="./content.html#edition3" class="collection__link" aria-label="Издание 03">03</a></li>
+                </ul>
             </li>
             <li class="collection__item">
-                <a href="./content.html#edition2" class="collection__link">Издание 2</a>
-            </li>
-            <li class="collection__item">
-                <a href="./content.html#edition3" class="collection__link">Издание 3</a>
+                <button class="collection__toggle" type="button" aria-expanded="false" aria-controls="specials-menu">
+                    Спецвыпуски
+                </button>
+                <ul class="collection__list collection__list_specials" id="specials-menu">
+                    <li><a href="./content.html#the-mysterious-monk" class="collection__link">The Mysterious Monk</a></li>
+                </ul>
             </li>
         </ul>
-        <nav class="navigation">
-            <a href="./contacts.html" class="navigation__link">Контакты</a>
-            <a href="./about.html" class="navigation__link">О нас</a>
+        <nav class="navigation" aria-label="О проекте">
+            <a href="./contacts.html" class="navigation__link">
+                Контакты
+            </a>
+            <a href="./about.html" class="navigation__link">
+                О нас
+            </a>
         </nav>
-        <button class="mobile-btn" type="button" aria-label="Открыть меню">
+        <button class="mobile-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
             <img src="./images/icons/burger-menu.svg" alt="" width="30" height="30">
         </button>
     </div>
@@ -77,11 +90,25 @@
     </div>
 </div>
 
-<div class="mobile-block" id="popup1">
+<div class="mobile-block" id="mobile-menu" aria-hidden="true">
     <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">
         <img src="./images/icons/close.svg" alt="">
     </button>
-    <nav class="mobile-menu">
+    <nav class="mobile-menu" aria-label="Главное меню">
+        <div class="mobile-menu__group">
+            <span class="mobile-menu__title">Издания</span>
+            <ul class="mobile-menu__list mobile-menu__list_editions">
+                <li><a href="./content.html#edition1" class="collection__link" aria-label="Издание 01">01</a></li>
+                <li><a href="./content.html#edition2" class="collection__link" aria-label="Издание 02">02</a></li>
+                <li><a href="./content.html#edition3" class="collection__link" aria-label="Издание 03">03</a></li>
+            </ul>
+        </div>
+        <div class="mobile-menu__group">
+            <span class="mobile-menu__title">Спецвыпуски</span>
+            <ul class="mobile-menu__list mobile-menu__list_specials">
+                <li><a href="./content.html#the-mysterious-monk" class="collection__link">The Mysterious Monk</a></li>
+            </ul>
+        </div>
         <a href="./contacts.html" class="navigation__link">Контакты</a>
         <a href="./about.html" class="navigation__link">О нас</a>
     </nav>

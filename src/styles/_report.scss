@@ -61,6 +61,12 @@
     }
   }
 
+  &_special img,
+  &_v3 img {
+    aspect-ratio: 444 / 580;
+    object-fit: cover;
+  }
+
   &__left img,
   &__center img,
   &__right img {

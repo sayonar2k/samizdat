@@ -33,23 +33,104 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollToTop();
     }
 
-    const initMobileMenu = () => {
+    const initNavigation = () => {
+        const collectionItems = document.querySelectorAll('.collection__item');
         const buttonMobile = document.querySelector('.mobile-btn');
         const menuMobile = document.querySelector('.mobile-block');
         const btnCloseMobileMenu = document.querySelector('.mobile-menu__close');
 
-        if (!buttonMobile || !menuMobile || !btnCloseMobileMenu) {
-            return;
+        const closeCollections = () => {
+            collectionItems.forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.collection__toggle')?.setAttribute('aria-expanded', 'false');
+            });
         }
 
-        buttonMobile.onclick = () => {
-            menuMobile.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        const closeMobileMenu = () => {
+            if (!menuMobile?.classList.contains('active')) {
+                return;
+            }
 
-        btnCloseMobileMenu.onclick = () => {
-            document.body.style.overflow = '';
             menuMobile.classList.remove('active');
+            menuMobile.setAttribute('aria-hidden', 'true');
+            buttonMobile?.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        collectionItems.forEach(item => {
+            const toggle = item.querySelector('.collection__toggle');
+
+            if (!toggle) {
+                return;
+            }
+
+            toggle.onclick = () => {
+                const isOpen = item.classList.contains('active');
+
+                closeCollections();
+
+                if (!isOpen) {
+                    item.classList.add('active');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+            }
+        });
+
+        if (buttonMobile && menuMobile && btnCloseMobileMenu) {
+            buttonMobile.onclick = () => {
+                closeCollections();
+                menuMobile.classList.add('active');
+                menuMobile.setAttribute('aria-hidden', 'false');
+                buttonMobile.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+                btnCloseMobileMenu.focus();
+            }
+
+            btnCloseMobileMenu.onclick = () => {
+                closeMobileMenu();
+                buttonMobile.focus();
+            }
+        }
+
+        const onClick = event => {
+            if (!event.target.closest('.collection__toggle')) {
+                closeCollections();
+            }
+
+            if (event.target.closest('.mobile-menu a') || event.target === menuMobile) {
+                closeMobileMenu();
+            }
+        }
+
+        const onKeydown = event => {
+            if (event.key === 'Escape') {
+                const activeToggle = document.querySelector('.collection__item.active .collection__toggle');
+
+                activeToggle?.focus();
+                closeCollections();
+
+                if (menuMobile?.classList.contains('active')) {
+                    closeMobileMenu();
+                    buttonMobile?.focus();
+                }
+            }
+        }
+
+        const onResize = () => {
+            if (window.innerWidth > 576) {
+                closeMobileMenu();
+            }
+        }
+
+        document.addEventListener('click', onClick);
+        document.addEventListener('keydown', onKeydown);
+        window.addEventListener('resize', onResize);
+
+        return () => {
+            document.removeEventListener('click', onClick);
+            document.removeEventListener('keydown', onKeydown);
+            window.removeEventListener('resize', onResize);
+            closeMobileMenu();
         }
     }
 
@@ -175,6 +256,22 @@ document.addEventListener('DOMContentLoaded', () => {
             'spirit-of-freedom': {
                 title: 'SPIRIT OF FREEDOM',
                 description: 'Школьная фотография никогда не обещает, кем станет человек. Одни взрослеют, другие начинают действовать. Sick clothes for sick people.'
+            },
+            '1916': {
+                title: '1916',
+                description: 'Медали сами нашли грудь, на которой их не ждали. Как тело — Неву.'
+            },
+            'l-armee-rouge': {
+                title: 'L\'ARMEE ROUGE',
+                description: 'Она не ждала освобождения.\nЕй нравилось, как туго затянуты узлы.'
+            },
+            'tokyo-lucky-hole': {
+                title: 'TOKYO LUCKY HOLE',
+                description: 'Камера была единственным, кто не отводил глаза.'
+            },
+            'russian-ballet-troupe': {
+                title: 'РУССКАЯ БАЛЕТНАЯ ТРУППА',
+                description: 'Имя взяли чужое.\nГолос оставили свой.\nА кошку так и не нашли.'
             }
         };
         const blockDropsBtns = document.querySelectorAll('.block-drops__btn');
@@ -222,11 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
             popupQuestionClose.onclick = closeQuestion;
         }
 
-        const findSectionLink = section => Array.from(links).find(link => {
-            const url = new URL(link.href, window.location.href);
-            return url.hash === `#${section.id}`;
-        });
-
         let scrollFrame;
 
         const updateActiveSection = () => {
@@ -253,8 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            links.forEach(link => link.classList.remove('active'));
-            findSectionLink(activeSection)?.classList.add('active');
+            links.forEach(link => {
+                const url = new URL(link.href, window.location.href);
+                link.classList.toggle('active', url.hash === `#${activeSection.id}`);
+            });
 
             if (window.location.hash !== `#${activeSection.id}`) {
                 const sectionUrl = new URL(window.location.href);
@@ -393,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initPage = () => {
         const cleanups = [];
 
-        initMobileMenu();
+        cleanups.push(initNavigation());
 
         const introBtn = document.querySelector('.intro__button');
 
