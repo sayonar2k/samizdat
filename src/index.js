@@ -272,6 +272,18 @@ document.addEventListener('DOMContentLoaded', () => {
             'russian-ballet-troupe': {
                 title: 'РУССКАЯ БАЛЕТНАЯ ТРУППА',
                 description: 'Имя взяли чужое.\nГолос оставили свой.\nА кошку так и не нашли.'
+            },
+            'nizhe-dna': {
+                title: 'НИЖЕ ДНА',
+                description: 'Он говорил, что человек звучит гордо.\nПотом долго смотрел, как эту гордость используют.\nИ в какой-то момент перестал спорить с дном.'
+            },
+            'after-the-dream': {
+                title: 'AFTER THE DREAM',
+                description: 'Они очень сильно захотели.\nНастолько сильно, что сон начал выдавать себя за реальность.\nИ почти у него получилось.'
+            },
+            'red-resurrection': {
+                title: 'RED RESURRECTION',
+                description: 'Прощение есть – спасения нет.'
             }
         };
         const blockDropsBtns = document.querySelectorAll('.block-drops__btn');
